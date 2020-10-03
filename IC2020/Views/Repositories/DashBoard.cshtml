@@ -1,4 +1,4 @@
-﻿@model IEnumerable<IC2020.Models.Repos>
+﻿@model IEnumerable<IC2020.Models.Item>
 
 @{
     ViewBag.Title = "DashBoard";
@@ -16,13 +16,13 @@
         $.get(url, null, function (data) {
             $("#valueDate1").html(data);
         });
-    </script>
+    </script>*@
     <script type="text/jscript">
-        var url = "/Home/GetDateC";
+        var url = "/Repositories/GetNameRepo";
         $.get(url, null, function (data) {
             $("#valueDateC").html(data);
         });
-    </script>*@
+    </script>
 
 <section class="content">
     <div class="container-fluid">
@@ -33,7 +33,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">USUÁRIO/REPOSITÓRIO</span>
-                        <span class="info-box-text">nodejs/node</span>
+                        <span class="info-box-text"id="valueDateC"></span>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="example1" class="table table-hover" height="100">
-                                @*@if (Model.Count() == 0)
+                                @if (Model.Count() == 0)
                                     {
                                         <tr>
                                             <td colspan="10">Não foram encontrados dados.</td>
@@ -68,53 +68,24 @@
 
                                     }
                                     else
-                                    {*@
+                                    {
                                 <thead>
                                     <tr style="background-color:#DE022A; color:white">
                                         <th scope="col">Desenvolvedor</th>
                                         <th scope="col">Versão</th>
                                         <th scope="col">Data</th>
                                     </tr>
-                                </thead>
-                                <tr>
-                                    <td>richardlau</td>
-                                    <td>v14.11.0</td>
-                                    <td>2020-09-15T20:22:48Z</td>
+                                </thead>                              
 
-                                </tr>
-                                <tr>
-                                    <td>richardlau</td>
-                                    <td>v14.10.1</td>
-                                    <td>2020-09-10T14:42:20Z</td>
-                                </tr>
-                                <tr>
-                                    <td>richardlau</td>
-                                    <td>v14.10.0</td>
-                                    <td>2020-09-08T15:02:59Z</td>
-                                </tr>
-                                <tr>
-                                    <td>BethGriggs</td>
-                                    <td>v12.18.4</td>
-                                    <td>2020-09-15T20:40:35Z</td>
-                                </tr>
-                                <tr>
-                                    <td>BethGriggs</td>
-                                    <td>v10.22.1</td>
-                                    <td>2020-09-15T20:32:02Z</td>
-                                </tr>
-
-                                @*foreach (var item in Model)
+                                foreach (var item in Model)
                                     {
-                                        <tr style='background-color: @(item.DIAANTERIOR >=10 || item.HOJE >=10 ? "rgba(255,0,0,0.3)" : "white");'>
-                                            <td>@item.NAME</td>
-                                            <td>@item.OSID</td>
-                                            <td>@item.HOJE</td>
-                                            <td>@item.DIAANTERIOR</td>
-                                            <td>@item.SEMANAL</td>
-                                            <td>@item.MENSAL</td>
+                                        <tr >
+                                            <td>@item.author.login</td>
+                                            <td>@item.tag_name</td>
+                                            <td>@item.published_at</td>                                           
                                         </tr>
-                                    }*@
-                                @* }*@
+                                    }
+                                 }
                             </table>
                         </div>
                     </div>
@@ -250,6 +221,7 @@
                                     data: {
                                         labels: ["v14.11.0", "v14.10.1", "v14.10.0", "v12.18.4", "v10.22.1"],
                                         datasets: [{
+
                                             data: [5, 2, 1, 0, 0],
                                             label: "Versão",
                                             borderColor: "#8e5ea2",

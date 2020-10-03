@@ -91,7 +91,6 @@ C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\bin\Debug\netcoreapp2.2
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\bin\Debug\netcoreapp2.2\IC2020.pdb
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\bin\Debug\netcoreapp2.2\IC2020.Views.dll
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\bin\Debug\netcoreapp2.2\IC2020.Views.pdb
-C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\IC2020.csprojAssemblyReference.cache
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\IC2020.RazorAssemblyInfo.cache
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\IC2020.RazorAssemblyInfo.cs
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\IC2020.AssemblyInfoInputs.cache
@@ -102,14 +101,9 @@ C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Repositories\DashBoard.cshtml.g.cs
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Repositories\Home.cshtml.g.cs
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Repositories\Index.cshtml.g.cs
-C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Repositories\MyRepositories.cshtml.g.cs
-C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Repositories\MyRepositoriesResult.cshtml.g.cs
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Repositories\Privacy.cshtml.g.cs
-C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Repositories\RepInfo.cshtml.g.cs
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Repositories\Report.cshtml.g.cs
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Repositories\ReportResult.cshtml.g.cs
-C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Repositories\Search.cshtml.g.cs
-C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Repositories\SearchResult.cshtml.g.cs
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -122,3 +116,4 @@ C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\IC2020.dll
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\IC2020.pdb
 C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\IC2020.csproj.CopyComplete
+C:\Users\Gerim\Desktop\AnalisedeRepositorioGitHub\IC2020\obj\Debug\netcoreapp2.2\IC2020.csprojAssemblyReference.cache
