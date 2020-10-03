@@ -1,0 +1,57 @@
+﻿model IEnumerable<IC2020.Models.Repos>
+
+    @{
+        ViewBag.Title = "Report";
+    }
+    <link rel="stylesheet" href="~/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+    <div class="card card-info">
+        <div class="card-header" style="background-color:#DE022A">
+            <h3 class="card-title">Resultados da Busca</h3>
+        </div>
+        <form class="form-horizontal">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example2" class="table table-hover">
+                        @if (Model.Count() == 0)
+                        {
+                            <tr>
+                                <td colspan="10">Não foram encontrados dados.</td>
+                            </tr>
+
+                        }
+                        else
+                        {
+                            <thead>
+                                <tr style="background-color:#DE022A; color:white">
+                                    <th scope="col">Data e Hora</th>
+                                    <th scope="col">FalseK</th>
+                                    <th scope="col">Travamento</th>
+                                    <th scope="col">Posição</th>
+                                    <th scope="col">Prefixo</th>
+                                    <th scope="col">Direção</th>
+                                    <th scope="col">Obs</th>
+                                </tr>
+                            </thead>
+
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.EventDateTime</td>
+                                    <td>@item.FalseK</td>
+                                    <td>@item.SwitchLocked</td>
+                                    <td>@item.SwitchPosition</td>
+                                    <td>@item.SymbolName</td>
+                                    <td>@item.SymbolDirection</td>
+                                    <td>@item.SymbolObservation</td>
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+
+
+        </form>
+    </div>

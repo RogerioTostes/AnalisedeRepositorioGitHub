@@ -9,8 +9,22 @@ namespace IC2020.Controllers
     {
         private AuxOperations _operations = new AuxOperations();
 
-
         public ActionResult Home()
+        {
+            return View();
+        }
+        public ActionResult DashBoard(string usuario, string repositorio)
+        {
+            var url = "https://api.github.com/repos/" + usuario + "/"+ repositorio + "/releases";
+            var result = _operations.GetStrFromJson(url);
+            var myRepos = JsonConvert.DeserializeObject<List<Item>>(result);
+            return View();
+        }
+        public ActionResult Report()
+        {
+            return View();
+        }
+        public ActionResult ReportResult()
         {
             return View();
         }
@@ -28,12 +42,10 @@ namespace IC2020.Controllers
 
             return View(myRepos);
         }
-
         public IActionResult Search()
         {
             return View();
         }
-
         public IActionResult SearchResult(string key)
         {
             var url = "https://api.github.com/search/repositories?q=" + key.ToLower();
@@ -41,30 +53,21 @@ namespace IC2020.Controllers
             var repos = JsonConvert.DeserializeObject<Repos>(searchResult);
 
             return View(repos);
+        }     
+
+        public IActionResult Favorites(Item fav)
+        {
+            MongoDbContext dbContext = new MongoDbContext();
+            dbContext.Itens.InsertOne(fav);
+
+            return View();
         }
-
-
-        //public IActionResult Favorites(Item fav)
-        //{
-        //    if (fav.id != 0)
-        //    {
-        //        _operations.DBInsert(fav);
-        //    }
-        //    return View();
-        //}
-
-        //public IActionResult RemoveFromFavs(Item fav)
-        //{
-        //    if (fav.id != 0) _operations.DBDelete(fav);
-        //    return RedirectToAction("Favorites", null);
-        //}
 
         [DisableRequestSizeLimit]
         public IActionResult RepInfo(Item i)
         {
             var collabsUrl = i.contributors_url;
-            var collabs = JsonConvert.DeserializeObject<List<Collabs>>(_operations.GetStrFromJson(collabsUrl));
-            // Object structure used to return general info and collaborators of a repository
+            var collabs = JsonConvert.DeserializeObject<List<Collabs>>(_operations.GetStrFromJson(collabsUrl));           
             var objs = new ObjStructure();
             objs.generalInfo = i;
             objs.collaborators = collabs;
