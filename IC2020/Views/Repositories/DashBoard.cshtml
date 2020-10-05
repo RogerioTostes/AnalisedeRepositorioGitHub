@@ -44,9 +44,9 @@
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            @*<button type="button" class="btn btn-tool" data-card-widget="remove">
                                 <i class="fas fa-times"></i>
-                            </button>
+                            </button>*@
                         </div>
                     </div>
                     <div class="card-body">
@@ -98,9 +98,9 @@
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            @*<button type="button" class="btn btn-tool" data-card-widget="remove">
                                 <i class="fas fa-times"></i>
-                            </button>
+                            </button>*@
                         </div>
                     </div>
                     <div class="card-body">
@@ -117,7 +117,7 @@
                                 var chart = new Chart(ctx, {
                                     type: 'pie',
                                     data: {
-                                        datasets: [{ backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 199, 132)', 'rgb(55, 99, 132)', 'rgba(0, 255, 0, 0.3)', "#8e5ea2"], data: [10, 5, 3, 15, 1] }], labels: ["v14.11.0", "v14.10.1", "v14.10.0", "v12.18.4", "v10.22.1",]
+                                        datasets: [{ backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 199, 132)', 'rgb(55, 99, 132)', 'rgba(0, 255, 0, 0.3)', "#8e5ea2"], data: [72, 2, 2, 3, 1] }], labels: ["v14.12.0", "v14.11.0", "v14.10.1", "v12.18.4", "v10.22.1",]
                                     },
                                     options: {
                                         responsive: true,
@@ -168,9 +168,9 @@
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            @*<button type="button" class="btn btn-tool" data-card-widget="remove">
                                 <i class="fas fa-times"></i>
-                            </button>
+                            </button>*@
                         </div>
                     </div>
                     <div class="card-body">
@@ -182,9 +182,8 @@
                                      console.log(events)
                                 const tag = events.map(x => x.tag_name)
                                 const datetag = events.map(x => x.published_at)
-var y = tag.map(s => parseFloat(s.slice(1)));
-            console.log(y)
-                                    new Chart(document.getElementById("mixed-chart"), {
+                                var y = tag.map(s => parseFloat(s.slice(1)));
+                                                                    new Chart(document.getElementById("mixed-chart"), {
                                         type: 'line',
                                         data: {
                                             labels: datetag,
@@ -225,9 +224,9 @@ var y = tag.map(s => parseFloat(s.slice(1)));
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            @*<button type="button" class="btn btn-tool" data-card-widget="remove">
                                 <i class="fas fa-times"></i>
-                            </button>
+                            </button>*@
                         </div>
                     </div>
                     <div class="card-body">
@@ -239,7 +238,7 @@ var y = tag.map(s => parseFloat(s.slice(1)));
                                         <th scope="col">Id</th>
                                         <th scope="col">Nome</th>
                                         <th scope="col">Branch Principal</th>
-                                        <th scope="col">Watchers</th>
+                                        <th scope="col">Watchers/Starred</th>
                                         <th scope="col">Issues Abertas</th>
                                         <th scope="col">Forks</th>
                                     </tr>
@@ -250,7 +249,7 @@ var y = tag.map(s => parseFloat(s.slice(1)));
                                     <td>@Model.repo.default_branch</td>
                                     <td>@Model.repo.watchers_count</td>
                                     <td>@Model.repo.open_issues_count</td>
-                                    <td>@Model.repo.forks</td>                                    
+                                    <td>@Model.repo.forks</td>
                                 </tr>
 
                             </table>

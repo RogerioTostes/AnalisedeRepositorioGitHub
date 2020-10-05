@@ -25,20 +25,13 @@ namespace IC2020.Controllers
             objs.item = myRepos;
             objs.repo = myRepos1;
             return View(objs);
+        }        
+
+        public ActionResult Search()
+        {
+            return View();
         }     
-    
-
-        public ActionResult Report()
-        {
-            return View();
-        }
-        public ActionResult ReportResult()
-        {
-            return View();
-        }
-
-
-
+              
 
     }
 }
