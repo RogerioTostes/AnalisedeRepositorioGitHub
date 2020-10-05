@@ -18,15 +18,15 @@ namespace IC2020.Controllers
             var url = "https://api.github.com/repos/" + usuario + "/" + repositorio + "/releases";
             var result = _operations.GetStrFromJson(url);
             var myRepos = JsonConvert.DeserializeObject<List<Item>>(result);
-            return View(myRepos);
-        }
-
-        //public IActionResult GetNameRepo()
-        //{
-           
-            
-        //}
-
+            var url1 = "https://api.github.com/repos/" + usuario + "/" + repositorio;
+            var result1 = _operations.GetStrFromJson(url1);
+            var myRepos1 = JsonConvert.DeserializeObject<RepoInfo>(result1);
+            var objs = new ObjStructure();
+            objs.item = myRepos;
+            objs.repo = myRepos1;
+            return View(objs);
+        }     
+    
 
         public ActionResult Report()
         {

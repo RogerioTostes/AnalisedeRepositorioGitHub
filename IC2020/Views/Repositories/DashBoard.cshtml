@@ -1,4 +1,5 @@
-﻿@model IEnumerable<IC2020.Models.Item>
+﻿@using  IC2020.Models
+@model ObjStructure
 
 @{
     ViewBag.Title = "DashBoard";
@@ -12,18 +13,6 @@
 
 <script type="text/javascript" src="~/chart/Chart.PieceLabel.js"></script>
 
-@*<script type="text/jscript">
-        var url = "/Home/GetDate1";
-        $.get(url, null, function (data) {
-            $("#valueDate1").html(data);
-        });
-    </script>*@
-@*<script type="text/jscript">
-        var url = "/Repositories/GetNameRepo";
-        $.get(url, null, function (data) {
-            $("#valueDateC").html(data);
-        });
-    </script>*@
 
 <section class="content">
     <div class="container-fluid">
@@ -35,7 +24,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">USUÁRIO/REPOSITÓRIO</span>
                         <span class="info-box-text" id="valueDateC">
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.item)
                             {
                                 @item.url.Split('/')[4]
                                 @item.url.Split('/')[5]
@@ -68,7 +57,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="example1" class="table table-hover" height="100">
-                                @if (Model.Count() == 0)
+                                @if (Model.item.Count() == 0)
                                 {
                                     <tr>
                                         <td colspan="10">Não foram encontrados dados.</td>
@@ -87,7 +76,7 @@
 
 
 
-                                    foreach (var item in Model)
+                                    foreach (var item in Model.item)
                                     {
                                         <tr>
                                             <td>@item.author.login</td>
@@ -194,11 +183,10 @@
                             <canvas id="mixed-chart" width="800" height="400"></canvas>
 
                             <script>
-                                  var events = @Html.Raw(JsonConvert.SerializeObject(Model))
+                                  var events = @Html.Raw(JsonConvert.SerializeObject(Model.item))
                                      console.log(events)
                                 const tag = events.map(x => x.tag_name)
                                 const datetag = events.map(x => x.published_at)
-                                var x = ["X2019","X2020","X2021","X2022"];
 var y = tag.map(s => parseFloat(s.slice(1)));
             console.log(y)
                                     new Chart(document.getElementById("mixed-chart"), {
@@ -223,6 +211,54 @@ var y = tag.map(s => parseFloat(s.slice(1)));
                                         }
                                     });
                             </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card card-danger card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="far fa-chart-bar"></i>
+                            INFORMAÇÕES DO REPOSITÓRIO
+                        </h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example1" class="table table-hover" height="100">
+
+                                <thead>
+                                    <tr style="background-color:#DE022A; color:white">
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Branch Principal</th>
+                                        <th scope="col">Watchers</th>
+                                        <th scope="col">Issues Abertas</th>
+                                        <th scope="col">Forks</th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td>@Model.repo.id</td>
+                                    <td>@Model.repo.full_name</td>
+                                    <td>@Model.repo.default_branch</td>
+                                    <td>@Model.repo.watchers_count</td>
+                                    <td>@Model.repo.open_issues_count</td>
+                                    <td>@Model.repo.forks</td>                                    
+                                </tr>
+
+                            </table>
                         </div>
                     </div>
                 </div>

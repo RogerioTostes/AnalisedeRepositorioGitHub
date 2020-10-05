@@ -17,10 +17,16 @@ namespace IC2020.Models
     {
         public string login { get; set; }
     }
-    public class Repos
+
+    public class RepoInfo
     {
-        public List<Item> items { get; set; }
+        public string id { get; set; }
+        public string full_name { get; set; }
+        public string language { get; set; }
+        public string default_branch { get; set; }
+        public int watchers_count { get; set; }
+        public int open_issues_count { get; set; }
+        public int forks { get; set; }
     }
-
-
 }
+
