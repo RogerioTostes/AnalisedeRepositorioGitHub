@@ -23,7 +23,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">USUÁRIO/REPOSITÓRIO</span>
-                        <span class="info-box-text" id="valueDateC">
+                        <span class="info-box-text" id="nameRepo">
                             @Model.repo.full_name
                         </span>
                     </div>
@@ -44,9 +44,6 @@
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            @*<button type="button" class="btn btn-tool" data-card-widget="remove">
-                                <i class="fas fa-times"></i>
-                            </button>*@
                         </div>
                     </div>
                     <div class="card-body">
@@ -98,21 +95,12 @@
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            @*<button type="button" class="btn btn-tool" data-card-widget="remove">
-                                <i class="fas fa-times"></i>
-                            </button>*@
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="wrapper">
                             <canvas id="totalChart" height="303"></canvas>
                             <script>
-                                //fetch('/Home/GetChart')
-                                //    .then(res => res.json())
-                                //    .then(data => {
-                                //        console.log(data)
-                                //        const name = data.map(x => x.name)
-                                //        const total = data.map(x => parseInt(x.total))
                                 var ctx = document.getElementById("totalChart");
                                 var chart = new Chart(ctx, {
                                     type: 'pie',
@@ -132,29 +120,15 @@
                                             fontSize: 14,
                                             fontStyle: 'bold',
                                             fontColor: '#000',
-                                            //fontFamily: '"Lucida Console", Monaco, monospace'
                                         }
                                     }
                                 });
-                                //})
-                                //.catch(err => console.log('err =>', err));
                             </script>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        @*<div class="row">
-                <div class="col-12">
-                    <div class="info-box bg-danger">
-                        <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">ÚLTIMA DATA DA PLUVIOMÊTRIA EXTRAÍDA, DA PREFEITURA DE SANTOS, PARA MAIS DETALHES CONSULTE <a href="https://www.santos.sp.gov.br/?q=pluviometria-tabela">O SITE.</a></span>
-                            <span class="info-box-text" id="valueDate1"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
         <div class="row">
             <div class="col-12">
                 <div class="card card-danger card-outline">
@@ -168,9 +142,6 @@
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            @*<button type="button" class="btn btn-tool" data-card-widget="remove">
-                                <i class="fas fa-times"></i>
-                            </button>*@
                         </div>
                     </div>
                     <div class="card-body">
@@ -224,9 +195,6 @@
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            @*<button type="button" class="btn btn-tool" data-card-widget="remove">
-                                <i class="fas fa-times"></i>
-                            </button>*@
                         </div>
                     </div>
                     <div class="card-body">
