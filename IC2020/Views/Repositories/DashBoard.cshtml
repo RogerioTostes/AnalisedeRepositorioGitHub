@@ -24,12 +24,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">USUÁRIO/REPOSITÓRIO</span>
                         <span class="info-box-text" id="valueDateC">
-                            @foreach (var item in Model.item)
-                            {
-                                @item.url.Split('/')[4]
-                                @item.url.Split('/')[5]
-                                break;
-                            }
+                            @Model.repo.full_name
                         </span>
                     </div>
                 </div>
