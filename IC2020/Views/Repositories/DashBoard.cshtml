@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "DashBoard";
 }
+@using Newtonsoft.Json;
 
 <link rel="stylesheet" href="~/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="~/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -17,12 +18,12 @@
             $("#valueDate1").html(data);
         });
     </script>*@
-    <script type="text/jscript">
-        var url = "/Repositories/GetNameRepo";
-        $.get(url, null, function (data) {
-            $("#valueDateC").html(data);
-        });
-    </script>
+<script type="text/jscript">
+    var url = "/Repositories/GetNameRepo";
+    $.get(url, null, function (data) {
+        $("#valueDateC").html(data);
+    });
+</script>
 
 <section class="content">
     <div class="container-fluid">
@@ -33,7 +34,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">USUÁRIO/REPOSITÓRIO</span>
-                        <span class="info-box-text"id="valueDateC"></span>
+                        <span class="info-box-text" id="valueDateC"></span>
                     </div>
                 </div>
             </div>
@@ -61,31 +62,33 @@
                         <div class="table-responsive">
                             <table id="example1" class="table table-hover" height="100">
                                 @if (Model.Count() == 0)
+                                {
+                                    <tr>
+                                        <td colspan="10">Não foram encontrados dados.</td>
+                                    </tr>
+
+                                }
+                                else
+                                {
+                                    <thead>
+                                        <tr style="background-color:#DE022A; color:white">
+                                            <th scope="col">Desenvolvedor</th>
+                                            <th scope="col">Versão</th>
+                                            <th scope="col">Data</th>
+                                        </tr>
+                                    </thead>
+
+
+
+                                    foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td colspan="10">Não foram encontrados dados.</td>
-                                        </tr>
-
-                                    }
-                                    else
-                                    {
-                                <thead>
-                                    <tr style="background-color:#DE022A; color:white">
-                                        <th scope="col">Desenvolvedor</th>
-                                        <th scope="col">Versão</th>
-                                        <th scope="col">Data</th>
-                                    </tr>
-                                </thead>                              
-
-                                foreach (var item in Model)
-                                    {
-                                        <tr >
                                             <td>@item.author.login</td>
                                             <td>@item.tag_name</td>
-                                            <td>@item.published_at</td>                                           
+                                            <td>@item.published_at</td>
                                         </tr>
                                     }
-                                 }
+                                }
                             </table>
                         </div>
                     </div>
@@ -182,7 +185,38 @@
                     <div class="card-body">
                         <div class="wrapper">
                             <canvas id="mixed-chart" width="800" height="400"></canvas>
+
                             <script>
+                                  var events = @Html.Raw(JsonConvert.SerializeObject(Model))
+                                     console.log(events)
+                                const tag = events.map(x => x.tag_name)
+                                const datetag = events.map(x => x.published_at)
+                                var x = ["X2019","X2020","X2021","X2022"];
+var y = tag.map(s => parseFloat(s.slice(1)));
+            console.log(y)
+                                    new Chart(document.getElementById("mixed-chart"), {
+                                        type: 'line',
+                                        data: {
+                                            labels: datetag,
+                                            datasets: [{
+                                                data: y,
+                                                label: "Versão",
+                                                borderColor: "#8e5ea2",
+                                                fill: false
+                                            },
+                                            ]
+                                        },
+                                        options: {
+                                            responsive: true,
+                                            title: {
+                                                display: true,
+                                                text: 'INTERVALO DE TEMPO ENTRE AS VERSÕES',
+                                                responsive: true
+                                            }
+                                        }
+                                    });
+                                </script>
+                            @*<script>
                                 //fetch('/Home/GetPluviometricHtml')
                                 //    .then(res => res.json())
                                 //    .then(data1 => {
@@ -192,58 +226,41 @@
                                 //        const pluviometrico = data1.map(x => parseInt(x.pluviometro))
                                 //        console.log(totalDia)
                                 //        console.log(pluviometrico)
+                                            var events = @Html.Raw(JsonConvert.SerializeObject(Model))
+                console.log(events)
+                                const tag = events.map(x => x.tag_name)
+                                const datetag = events.map(x => x.published_at)
+                                var x = ["X2019","X2020","X2021","X2022"];
+var y = tag.map(s => parseFloat(s.slice(1)));
+            console.log(y)
+                                        new Chart(document.getElementById("mixed-chart"), {
+                                            type: 'bar',
+                                            data: {
+                                                label: "FALSEK (TOTAL DIA ANTERIOR)",
+                                                datasets: [{ backgroundColor: "rgba(255,0,0,0.3)", data: [0,0,10], label: "FALSEK (TOTAL DIA ANTERIOR)", },
+                                                {
+                                                    label: "PLUVIÔMETRO (MM)",
+                                                    type: "line",
+                                                    borderColor: "#8e5ea2",
+                                                    data: y,
+                                                    fill: false
+                                                },
 
-                                //new Chart(document.getElementById("mixed-chart"), {
-                                //    type: 'bar',
-                                //    data: {
-                                //        label: "FALSEK (TOTAL DIA ANTERIOR)",
-                                //        datasets: [{ backgroundColor: "rgba(255,0,0,0.3)", data: totalDia, label: "FALSEK (TOTAL DIA ANTERIOR)", },
-                                //        {
-                                //            label: "PLUVIÔMETRO (MM)",
-                                //            type: "line",
-                                //            borderColor: "#8e5ea2",
-                                //            data: pluviometrico,
-                                //            fill: false
-                                //        },
-
-                                //        ], labels: dataM
-                                //    },
-                                //    options: {
-                                //        responsive: true,
-                                //        title: {
-                                //            display: true,
-                                //            responsive: true
-                                //        }
-                                //    }
-                                //});
-                                new Chart(document.getElementById("mixed-chart"), {
-                                    type: 'line',
-                                    data: {
-                                        labels: ["v14.11.0", "v14.10.1", "v14.10.0", "v12.18.4", "v10.22.1"],
-                                        datasets: [{
-
-                                            data: [5, 2, 1, 0, 0],
-                                            label: "Versão",
-                                            borderColor: "#8e5ea2",
-                                            fill: false
-                                        },
-                                        ]
-                                    },
-                                    options: {
-                                        responsive: true,
-                                        title: {
-                                            display: true,
-                                            text: 'INTERVALO DE TEMPO ENTRE AS VERSÕES',
-                                            responsive: true
-                                        }
-                                    }
-                                });
-
-
-
-                                                                                            //})
-                                                                                            //.catch(err => console.log('err =>', err));
-                            </script>
+                                                ],labels: ["30/09/2020", "29/09/2020", "28/09/2020", "27/09/2020", "26/09/2020", "25/09/2020", "24/09/2020", "23/09/2020", "22/09/2020", "21/09/2020", "20/09/2020",
+                                                "19/09/2020", "18/09/2020", "17/09/2020", "16/09/2020", "15/09/2020", "14/09/2020", "13/09/2020", "12/09/2020", "11/09/2020", "10/09/2020", "09/09/2020",
+                                          "08/09/2020","07/09/2020","06/09/2020","05/09/2020","04/09/2020","03/09/2020","02/09/2020","01/09/2020"]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                title: {
+                                                    display: true,
+                                                    responsive: true
+                                                }
+                                            }
+                                        });
+                                    //})
+                                    //.catch(err => console.log('err =>', err));
+                            </script>*@
                         </div>
                     </div>
                 </div>
